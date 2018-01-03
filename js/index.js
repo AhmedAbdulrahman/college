@@ -1,12 +1,12 @@
 $(document).ready(function(){
   var zindex = 10;
-  
-  $("div.card").click(function(e){
+
+  $("a.toggle-info").click(function(e){
     e.preventDefault();
 
     var isShowing = false;
 
-    if ($(this).hasClass("show")) {
+    if ($(this).parents('.card').hasClass("show")) {
       isShowing = true
     }
 
@@ -22,6 +22,7 @@ $(document).ready(function(){
       } else {
         // this card isn't showing - get in with it
         $(this)
+          .parents('.card')
           .css({zIndex: zindex})
           .addClass("show");
 
@@ -34,11 +35,12 @@ $(document).ready(function(){
       $("div.cards")
         .addClass("showing");
       $(this)
+        .parents('.card')
         .css({zIndex:zindex})
         .addClass("show");
 
       zindex++;
     }
-    
+
   });
 });
